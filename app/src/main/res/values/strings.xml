@@ -1,5 +1,20 @@
 <resources>
-    <string name="app_name">TwoTeamVolumeButtonCounter</string>
+
+    <string name="app_name_new">Volume Button Scorekeeper (Two Teams)</string>
+
+    <string name="reset">Reset</string>
+    <string name="edit_starting_scores">Edit Starting Scores</string>
+    <string name="settings_score_default" translatable="false">0</string>
+    <string name="settings_starting_score_default" translatable="false">0</string>
+    <string name="team_one_score_key" translatable="false">team_one_score</string>
+    <string name="team_one_starting_score_key" translatable="false">team_one_starting_score</string>
+    <string name="team_two_score_key" translatable="false">team_two_score</string>
+    <string name="team_two_starting_score_key" translatable="false">team_two_starting_score</string>
+    <string name="action_save_starting_scores">Save Starting Scores</string>
+    <string name="large_number_error_toast">Error: number is too large</string>
+    <string name="preference_file_key" translatable="false">pref</string>
+    <string name="team">Team</string>
+    <string name="save">Save</string>
 
     <!--Donation page-->
     <string name="action_donate">Donate to Developer</string>
@@ -15,18 +30,12 @@
     <string name="small_heart">small heart</string>
     <string name="medium_heart">medium heart</string>
     <string name="large_heart">large heart</string>
-
-    <string name="reset">Reset</string>
-    <string name="edit_starting_number">Edit Starting Number</string>
-    <string name="settings_number_key" translatable="false">number</string>
-    <string name="settings_number_default" translatable="false">0</string>
-    <string name="settings_starting_number_key" translatable="false">starting_number_key</string>
-    <string name="settings_starting_number_default" translatable="false">0</string>
-    <string name="action_save_starting_number">Save Starting Number</string>
-    <string name="large_number_error_toast">Error: number is too large</string>
     <string name="large">Large</string>
     <string name="small">Small</string>
     <string name="medium">Medium</string>
-    <string name="preference_file_key" translatable="false">pref</string>
-    <string name="team">Team</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="one" translatable="false">1</string>
+    <string name="space_two" translatable="false">" 2"</string>
+    <string name="space_one" translatable="false">" 1"</string>
+
 </resources>

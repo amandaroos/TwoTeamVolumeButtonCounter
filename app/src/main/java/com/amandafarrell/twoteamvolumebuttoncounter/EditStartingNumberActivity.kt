@@ -5,14 +5,15 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView.OnEditorActionListener
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_edit_starting_number_activity.*
 
 class EditStartingNumberActivity : AppCompatActivity() {
-    var starting_number = 0
+    var team1StartingNumber = 0
+    var team2StartingNumber = 0
+
     private var sharedPreferences: SharedPreferences? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,23 +21,21 @@ class EditStartingNumberActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_starting_number_activity)
 
         //Set variable values from Shared Preferences
-        sharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key),Context.MODE_PRIVATE) ?: return
-        starting_number = sharedPreferences!!.getString(
-            getString(R.string.settings_starting_number_key),
-            getString(R.string.settings_starting_number_default)
+        sharedPreferences =
+            this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+                ?: return
+        team1StartingNumber = sharedPreferences!!.getString(
+            getString(R.string.team_one_starting_score_key),
+            getString(R.string.settings_starting_score_default)
         )!!.toInt()
-        edit_text_starting_number.setText(starting_number.toString())
-        //Save and finish EditStartingNumber activity when "done" is pressed on keyboard
-        edit_text_starting_number.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
-            var handled = false
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                saveStartingNumber()
-                setStartingNumberAsNumber()
-                finish()
-                handled = true
-            }
-            handled
-        })
+        team2StartingNumber = sharedPreferences!!.getString(
+            getString(R.string.team_two_score_key),
+            getString(R.string.settings_starting_score_default)
+        )!!.toInt()
+
+
+        edit_team1_starting_number.setText(team1StartingNumber.toString())
+        edit_team2_starting_number.setText(team2StartingNumber.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -47,8 +46,7 @@ class EditStartingNumberActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_save_starting_number -> {
-                saveStartingNumber()
-                setStartingNumberAsNumber()
+                save()
                 finish()
                 return true
             }
@@ -56,22 +54,43 @@ class EditStartingNumberActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    fun saveStartingNumber() { //Check the input
-        try {
-            starting_number = Integer.valueOf(edit_text_starting_number!!.text.toString())
-        } catch (e: Exception) {
-            Toast.makeText(this, R.string.large_number_error_toast, Toast.LENGTH_LONG).show()
-            edit_text_starting_number!!.text.clear()
-        }
-        //Save new starting number to SharedPreferences
-        sharedPreferences!!.edit()
-            .putString(getString(R.string.settings_starting_number_key), starting_number.toString())
-            .apply()
+    fun saveOnClick(view: View){
+        save()
+        finish()
     }
 
-    fun setStartingNumberAsNumber() {
+    fun save() { //Check the input
+        try {
+            team1StartingNumber = Integer.valueOf(edit_team1_starting_number!!.text.toString())
+        } catch (e: Exception) {
+            Toast.makeText(this, R.string.large_number_error_toast, Toast.LENGTH_LONG).show()
+            edit_team1_starting_number!!.text.clear()
+        }
+
+        try {
+            team2StartingNumber = Integer.valueOf(edit_team2_starting_number!!.text.toString())
+        } catch (e: Exception) {
+            Toast.makeText(this, R.string.large_number_error_toast, Toast.LENGTH_LONG).show()
+            edit_team2_starting_number!!.text.clear()
+        }
+
         sharedPreferences!!.edit()
-            .putString(getString(R.string.settings_number_key), starting_number.toString())
+            .putString(
+                getString(R.string.team_one_score_key),
+                team1StartingNumber.toString()
+            )
+            .putString(
+                getString(R.string.team_two_score_key),
+                team2StartingNumber.toString()
+            )
+            .putString(
+                getString(R.string.team_one_starting_score_key),
+                team1StartingNumber.toString()
+            )
+            .putString(
+                getString(R.string.team_two_starting_score_key),
+                team2StartingNumber.toString()
+            )
             .apply()
     }
 }

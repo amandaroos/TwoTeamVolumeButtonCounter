@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:theme="@style/LabelTheme"
         android:id="@+id/label_team1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,10 +19,11 @@
         app:layout_constraintVertical_bias="0.41000003" />
 
     <TextView
+        android:theme="@style/LabelTheme"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 1"
+        android:text="@string/space_one"
         app:layout_constraintBottom_toBottomOf="@+id/label_team1"
         app:layout_constraintStart_toEndOf="@+id/label_team1"
         app:layout_constraintTop_toTopOf="@+id/label_team1" />
@@ -30,8 +32,9 @@
         android:id="@+id/team1_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="@string/one"
         android:textSize="72sp"
+        android:fontFamily=""
         app:layout_constraintBottom_toTopOf="@+id/label_team1"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -40,6 +43,7 @@
 
 
     <TextView
+        android:theme="@style/LabelTheme"
         android:id="@+id/label_team2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -51,10 +55,11 @@
         app:layout_constraintVertical_bias="0.706" />
 
     <TextView
+        android:theme="@style/LabelTheme"
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" 2"
+        android:text="@string/space_two"
         app:layout_constraintBottom_toBottomOf="@+id/label_team2"
         app:layout_constraintStart_toEndOf="@+id/label_team2"
         app:layout_constraintTop_toTopOf="@+id/label_team2" />
@@ -63,7 +68,7 @@
         android:id="@+id/team2_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
+        android:text="@string/one"
         android:textSize="72sp"
         app:layout_constraintBottom_toTopOf="@+id/label_team2"
         app:layout_constraintEnd_toEndOf="@+id/label_team2"

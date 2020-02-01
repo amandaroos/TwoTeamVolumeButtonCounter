@@ -16,6 +16,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--Label theme-->
+    <style name="LabelTheme">
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="ButtonTheme">
         <item name="android:layout_margin">32dp</item>
         <item name="android:textColor">@android:color/white</item>
